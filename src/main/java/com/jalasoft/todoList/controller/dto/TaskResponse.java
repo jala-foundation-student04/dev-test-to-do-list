@@ -2,9 +2,13 @@ package com.jalasoft.todoList.controller.dto;
 
 import com.jalasoft.todoList.database.entity.UserEntity;
 import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
 @Builder
+@Data
+@EqualsAndHashCode
 public class TaskResponse {
 
     private Long id;
@@ -16,5 +20,5 @@ public class TaskResponse {
     private LocalDateTime created;
     private LocalDateTime lastUpdated;
     private Boolean active;
-    private UserEntity user;
+    private UserResponse user;
 }

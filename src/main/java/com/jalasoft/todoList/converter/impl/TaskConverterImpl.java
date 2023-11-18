@@ -1,5 +1,6 @@
 package com.jalasoft.todoList.converter.impl;
 
+import com.jalasoft.todoList.controller.dto.UserResponse;
 import com.jalasoft.todoList.converter.TaskConverter;
 import com.jalasoft.todoList.controller.dto.TaskRequest;
 import com.jalasoft.todoList.controller.dto.TaskResponse;
@@ -50,7 +51,10 @@ public class TaskConverterImpl implements TaskConverter {
                 .created(task.getCreated())
                 .lastUpdated(task.getLastUpdated())
                 .active(task.getActive())
-                .user(task.getUser())
+                .user(UserResponse.builder()
+                        .id(nonNull(task.getUser()) ? task.getUser().getId() : null)
+                        .name(nonNull(task.getUser()) ? task.getUser().getName() : null)
+                        .build())
                 .build();
     }
 

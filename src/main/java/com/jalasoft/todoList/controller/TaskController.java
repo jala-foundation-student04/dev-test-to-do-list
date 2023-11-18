@@ -27,8 +27,8 @@ public class TaskController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @GetMapping(name = "{idUser}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<List<TaskResponse>> taskList(@RequestParam Long idUser) {
+    @GetMapping(produces = "application/json")
+    public ResponseEntity<List<TaskResponse>> taskList(@RequestParam(name = "id-user") Long idUser) {
 
         return ResponseEntity.status(HttpStatus.OK).body(taskConverter.convertDomainListToResponseList(taskService.listTasks(idUser)));
     }
