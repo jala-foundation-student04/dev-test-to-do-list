@@ -33,10 +33,10 @@ public class TaskController {
         return ResponseEntity.status(HttpStatus.OK).body(taskConverter.convertDomainListToResponseList(taskService.listTasks(idUser)));
     }
 
-    @DeleteMapping(consumes = "application/json", produces = "application/json")
-    public ResponseEntity deleteTask(Long idTask) {
-
-        return ResponseEntity.status(HttpStatus.OK).body(taskConverter.convertDomainListToResponseList(taskService.listTasks(idTask)));
+    @DeleteMapping
+    public ResponseEntity deleteTask(@RequestParam(name = "id") Long id) {
+        taskService.deleteTask(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @PutMapping(consumes = "application/json", produces = "application/json")
