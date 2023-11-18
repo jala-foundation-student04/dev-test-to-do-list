@@ -40,7 +40,7 @@ public class TaskController {
     }
 
     @PutMapping(consumes = "application/json", produces = "application/json")
-    public ResponseEntity<TaskResponse> updateTask(TaskRequest taskRequest) {
+    public ResponseEntity<TaskResponse> updateTask(@RequestBody TaskRequest taskRequest) {
 
         TaskResponse taskResponse = taskConverter.convertDomainToResponse(taskService.updateTask(taskConverter.convertRequestToDomain(taskRequest)));
 
